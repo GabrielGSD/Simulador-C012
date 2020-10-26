@@ -33,8 +33,6 @@ public class TelaDeProcessos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NumeroDeProcessos = new javax.swing.JTextField();
-        LabelNumeroDeProcessos = new javax.swing.JLabel();
         LabelChegadaZero = new javax.swing.JLabel();
         OpcaoChegadaZero = new javax.swing.JComboBox<>();
         BtAvancar = new javax.swing.JButton();
@@ -42,15 +40,7 @@ public class TelaDeProcessos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        NumeroDeProcessos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumeroDeProcessosActionPerformed(evt);
-            }
-        });
-
-        LabelNumeroDeProcessos.setText("Insira o número de processos");
-
-        LabelChegadaZero.setText("Os processos chegaram todos no Arrival Time 0 ?");
+        LabelChegadaZero.setText("Os processos chegaram todos com Arrival Time 0 ?");
 
         OpcaoChegadaZero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
         OpcaoChegadaZero.addActionListener(new java.awt.event.ActionListener() {
@@ -78,46 +68,34 @@ public class TelaDeProcessos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(OpcaoChegadaZero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelChegadaZero)
-                            .addComponent(LabelNumeroDeProcessos)
-                            .addComponent(NumeroDeProcessos, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtAvancar)
-                        .addGap(44, 44, 44))))
+                        .addGap(141, 141, 141)
+                        .addComponent(BtAvancar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(OpcaoChegadaZero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelChegadaZero)))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(LabelNumeroDeProcessos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NumeroDeProcessos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(21, 21, 21)
                 .addComponent(LabelChegadaZero)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OpcaoChegadaZero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtCancelar)
                     .addComponent(BtAvancar))
-                .addGap(36, 36, 36))
+                .addGap(27, 27, 27))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NumeroDeProcessosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroDeProcessosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NumeroDeProcessosActionPerformed
 
     private void OpcaoChegadaZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcaoChegadaZeroActionPerformed
         // TODO add your handling code here:
@@ -127,37 +105,15 @@ public class TelaDeProcessos extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean op = true;
         do{
-            try{
-               
-                NumProcess = Integer.parseInt(NumeroDeProcessos.getText());        
-                op = false;
-            }catch (NumberFormatException nfe){
-                
-                JOptionPane.showInputDialog("Valor inserido inválido!!!\n Tente novamente.", null);
-                break;
-            }
-            
-            if(NumProcess <= 0){
-                
-                JOptionPane.showInputDialog("Valor inserido inválido!!!\n Tente novamente.", null);
+            if(OpcaoChegadaZero.getSelectedIndex() == 0){
+                tz.setVisible(true);
+                dispose();
+
             }else{
-                
-                if(OpcaoChegadaZero.getSelectedIndex() == 0){
-                    
-                    CalculoZero cz = new CalculoZero(NumProcess);
-                    
-                    tz.setVisible(true);
-                    dispose();
-                }else{
-                    
-                    Calculo cl = new Calculo();
-                    
-                    td.setVisible(true);
-                    dispose();
-                }
+                td.setVisible(true);
+                dispose();
+            
             }
-            
-            
             break;
         }while(op);
     }//GEN-LAST:event_BtAvancarActionPerformed
@@ -207,8 +163,6 @@ public class TelaDeProcessos extends javax.swing.JFrame {
     private javax.swing.JButton BtAvancar;
     private javax.swing.JButton BtCancelar;
     private javax.swing.JLabel LabelChegadaZero;
-    private javax.swing.JLabel LabelNumeroDeProcessos;
-    private javax.swing.JTextField NumeroDeProcessos;
     private javax.swing.JComboBox<String> OpcaoChegadaZero;
     // End of variables declaration//GEN-END:variables
 }

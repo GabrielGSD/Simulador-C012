@@ -171,7 +171,7 @@ public class TelaTabelaDeDadosZero extends javax.swing.JFrame {
         String priority = txt_Priority.getText().trim();
         
         DefaultTableModel dtm = (DefaultTableModel) TabelaDeDadosZero.getModel();
-        dtm.addRow(new String[]{process, burstTime, priority});
+        dtm.addRow(new String[]{ process, burstTime, priority});
         
         txt_NameProcess.setText("");
         txt_BurstTime.setText("");

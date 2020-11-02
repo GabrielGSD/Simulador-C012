@@ -5,6 +5,8 @@
  */
 package simulador;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author moise
@@ -29,8 +31,18 @@ public class TelaTabelaDeDados extends javax.swing.JFrame {
 
         BtAvancar = new javax.swing.JButton();
         BtCancelar = new javax.swing.JButton();
+        lbl_NameProcess = new javax.swing.JLabel();
+        txt_NameProcess = new javax.swing.JTextField();
+        lbl_BurstTime = new javax.swing.JLabel();
+        txt_BurstTime = new javax.swing.JTextField();
+        lbl_Priority = new javax.swing.JLabel();
+        txt_Priority = new javax.swing.JTextField();
+        BtEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaDeDadosZero = new javax.swing.JTable();
+        TabelaDeDados = new javax.swing.JTable();
+        BtInserir = new javax.swing.JButton();
+        lbl_ArrivalTime = new javax.swing.JLabel();
+        txt_ArrivalTime = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,44 +60,121 @@ public class TelaTabelaDeDados extends javax.swing.JFrame {
             }
         });
 
-        TabelaDeDadosZero.setModel(new javax.swing.table.DefaultTableModel(
+        lbl_NameProcess.setText("Process");
+
+        lbl_BurstTime.setText("Burst Time");
+
+        txt_BurstTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_BurstTimeActionPerformed(evt);
+            }
+        });
+
+        lbl_Priority.setText("Priority");
+
+        BtEditar.setText("Editar");
+        BtEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEditarActionPerformed(evt);
+            }
+        });
+
+        TabelaDeDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Process", "Arrival Time", "Burst Time", "Priority"
             }
         ));
-        jScrollPane1.setViewportView(TabelaDeDadosZero);
+        jScrollPane1.setViewportView(TabelaDeDados);
+
+        BtInserir.setText("Inserir");
+        BtInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtInserirActionPerformed(evt);
+            }
+        });
+
+        lbl_ArrivalTime.setText("Arrival Time");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(BtCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(BtAvancar)
-                .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(BtCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_NameProcess)
+                                    .addComponent(BtEditar)
+                                    .addComponent(txt_NameProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(107, 107, 107))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_ArrivalTime)
+                            .addComponent(txt_ArrivalTime, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BtInserir)
+                        .addComponent(BtAvancar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_BurstTime, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_BurstTime))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Priority)
+                            .addComponent(txt_Priority, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)))
+                .addGap(18, 18, 18))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(24, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Priority)
+                    .addComponent(lbl_BurstTime)
+                    .addComponent(lbl_ArrivalTime)
+                    .addComponent(lbl_NameProcess))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtInserir)
+                            .addComponent(BtEditar))
+                        .addGap(121, 121, 121))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_BurstTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Priority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_ArrivalTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_NameProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtAvancar)
                     .addComponent(BtCancelar))
-                .addGap(25, 25, 25))
+                .addGap(14, 14, 14))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(169, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58)))
         );
 
         pack();
@@ -101,6 +190,50 @@ public class TelaTabelaDeDados extends javax.swing.JFrame {
         dispose();
         setVisible(false);
     }//GEN-LAST:event_BtCancelarActionPerformed
+
+    private void BtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEditarActionPerformed
+        // TODO add your handling code here:
+
+        txt_NameProcess.setText(TabelaDeDados.getValueAt(TabelaDeDados.getSelectedRow(), 0) + "");
+        txt_ArrivalTime.setText(TabelaDeDados.getValueAt(TabelaDeDados.getSelectedRow(), 1) + "");
+        txt_BurstTime.setText(TabelaDeDados.getValueAt(TabelaDeDados.getSelectedRow(), 2) + "");
+        txt_Priority.setText(TabelaDeDados.getValueAt(TabelaDeDados.getSelectedRow(), 3) + "");
+
+        String process = txt_NameProcess.getText().trim();
+        String arrivalTime = txt_ArrivalTime.getText().trim();
+        String burstTime = txt_BurstTime.getText().trim();
+        String priority = txt_Priority.getText().trim();
+
+        // Corrigir essa parte do editar
+
+        DefaultTableModel dtm = (DefaultTableModel) TabelaDeDados.getModel();
+        dtm.addRow(new String[]{process, arrivalTime, burstTime, priority});
+
+        txt_NameProcess.requestFocus();
+    }//GEN-LAST:event_BtEditarActionPerformed
+
+    private void BtInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtInserirActionPerformed
+        // TODO add your handling code here:
+
+        String process = "P" + txt_NameProcess.getText().trim();
+        String arrivalTime = txt_ArrivalTime.getText().trim();
+        String burstTime = txt_BurstTime.getText().trim();
+        String priority = txt_Priority.getText().trim();
+
+        DefaultTableModel dtm = (DefaultTableModel) TabelaDeDados.getModel();
+        dtm.addRow(new String[]{process,arrivalTime, burstTime, priority});
+
+        txt_NameProcess.setText("");
+        txt_ArrivalTime.setText("");
+        txt_BurstTime.setText("");
+        txt_Priority.setText("");
+
+        txt_NameProcess.requestFocus();
+    }//GEN-LAST:event_BtInserirActionPerformed
+
+    private void txt_BurstTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BurstTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_BurstTimeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,7 +273,17 @@ public class TelaTabelaDeDados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAvancar;
     private javax.swing.JButton BtCancelar;
-    private javax.swing.JTable TabelaDeDadosZero;
+    private javax.swing.JButton BtEditar;
+    private javax.swing.JButton BtInserir;
+    public javax.swing.JTable TabelaDeDados;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_ArrivalTime;
+    private javax.swing.JLabel lbl_BurstTime;
+    private javax.swing.JLabel lbl_NameProcess;
+    private javax.swing.JLabel lbl_Priority;
+    private javax.swing.JTextField txt_ArrivalTime;
+    private javax.swing.JTextField txt_BurstTime;
+    private javax.swing.JTextField txt_NameProcess;
+    private javax.swing.JTextField txt_Priority;
     // End of variables declaration//GEN-END:variables
 }

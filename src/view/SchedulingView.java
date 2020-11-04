@@ -136,9 +136,9 @@ public class SchedulingView extends javax.swing.JFrame {
         });
 
         executeButton.setBackground(new java.awt.Color(56, 174, 255));
-        executeButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        executeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         executeButton.setForeground(new java.awt.Color(255, 255, 255));
-        executeButton.setText("Execute");
+        executeButton.setText("EXECUTAR");
         executeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         executeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,7 +147,7 @@ public class SchedulingView extends javax.swing.JFrame {
         });
 
         algorithmBox.setBackground(new java.awt.Color(56, 174, 255));
-        algorithmBox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        algorithmBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         algorithmBox.setForeground(new java.awt.Color(255, 255, 255));
         algorithmBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    FCFS - Not Preemptive", "    SJF - Preemptive" }));
         algorithmBox.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class SchedulingView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(algorithmBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(executeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 106, -1, 520));

@@ -72,7 +72,7 @@ public class SJF extends Thread {
                     }
                     executedJobs.add(currentJob);
                     
-                    this.print(Color.red, "P" + currentJob.getId() + " foi executado (Burst Time = 0 segundos)");
+                    this.print(Color.red, "P" + currentJob.getId() + " executado (Burst Time = 0s)");
                 }
             }
 

@@ -53,6 +53,7 @@ public class SchedulingView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,9 +63,10 @@ public class SchedulingView extends javax.swing.JFrame {
         Add = new javax.swing.JLabel();
         executeButton = new javax.swing.JButton();
         algorithmBox = new javax.swing.JComboBox<>();
+        bt_FCFS = new javax.swing.JRadioButton();
+        bt_SJF = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(920, 600));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -108,7 +110,7 @@ public class SchedulingView extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
+            .addGap(0, 897, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +145,33 @@ public class SchedulingView extends javax.swing.JFrame {
             }
         });
 
+        bt_FCFS.setBackground(new java.awt.Color(56, 174, 255));
+        buttonGroup1.add(bt_FCFS);
+        bt_FCFS.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_FCFS.setForeground(new java.awt.Color(255, 255, 255));
+        bt_FCFS.setText("FCFS - NÃO PREEMPTIVO");
+        bt_FCFS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_FCFSMouseClicked(evt);
+            }
+        });
+        bt_FCFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_FCFSActionPerformed(evt);
+            }
+        });
+
+        bt_SJF.setBackground(new java.awt.Color(56, 174, 255));
+        buttonGroup1.add(bt_SJF);
+        bt_SJF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_SJF.setForeground(new java.awt.Color(255, 255, 255));
+        bt_SJF.setText("SJF - PREEMPTIVO");
+        bt_SJF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_SJFMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -151,20 +180,26 @@ public class SchedulingView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(bt_FCFS, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_SJF, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(executeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jobsList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Add)
                         .addGap(51, 51, 51))))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(144, 144, 144)
                 .addComponent(algorithmBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(executeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,9 +211,12 @@ public class SchedulingView extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(algorithmBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(executeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addComponent(executeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_FCFS, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_SJF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(algorithmBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 106, -1, 520));
@@ -210,6 +248,23 @@ public class SchedulingView extends javax.swing.JFrame {
         this.addJob();
     }//GEN-LAST:event_AddMouseClicked
 
+    private void bt_FCFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_FCFSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_FCFSActionPerformed
+
+    private void bt_FCFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_FCFSMouseClicked
+        // TODO add your handling code here:
+        
+        /*if(bt_FCFS.isSelected()){
+            this.algorithmBox = bt_FCFS.toString();
+            return;a*/
+        
+    }//GEN-LAST:event_bt_FCFSMouseClicked
+
+    private void bt_SJFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_SJFMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_SJFMouseClicked
+
     public List<JobsView> getJobs() {
         return jobs;
     }
@@ -217,7 +272,8 @@ public class SchedulingView extends javax.swing.JFrame {
     public void setJobs(List<JobsView> jobs) {
         this.jobs = jobs;
     }
-
+    
+   
     public JComboBox<String> getjComboBox1() {
         return algorithmBox;
     }
@@ -225,40 +281,14 @@ public class SchedulingView extends javax.swing.JFrame {
     public void setjComboBox1(JComboBox<String> jComboBox1) {
         this.algorithmBox = jComboBox1;
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SchedulingView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SchedulingView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SchedulingView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SchedulingView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
+                
                 new SchedulingView().setVisible(true);
             }
         });
@@ -267,6 +297,9 @@ public class SchedulingView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Add;
     private javax.swing.JComboBox<String> algorithmBox;
+    private javax.swing.JRadioButton bt_FCFS;
+    private javax.swing.JRadioButton bt_SJF;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton executeButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

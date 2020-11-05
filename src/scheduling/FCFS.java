@@ -12,10 +12,6 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import view.ExecuteView;
 
-/**
- * This class calculate the average time using the algorithm FCFS.
- *
- */
 public class FCFS extends Thread {
     private List<Jobs> readyQueue = new ArrayList<Jobs>();
     private ExecuteView executeView;
@@ -27,9 +23,6 @@ public class FCFS extends Thread {
         Collections.sort(this.readyQueue, firstArrived);
     }
     
-    /**
-     * Method to sort the jobs according to arrival times     
-     */
     public static Comparator<Jobs> firstArrived = new Comparator<Jobs>() {
         @Override
         public int compare(Jobs job1, Jobs job2) {
@@ -43,9 +36,6 @@ public class FCFS extends Thread {
         }
     };
 
-    /**
-     * Method to calculte the average time.      
-     */
     @Override
     public void run() {
         double totalTime = 0;
@@ -55,10 +45,10 @@ public class FCFS extends Thread {
         
         for (Jobs jobs : readyQueue) {
             for (int i = jobs.getBurstTime(); i > 0; i--) {
-                this.print(Color.black, "Processo P" + jobs.getId() + " está executando (Burst Time = " + i + " segundos)");
+                this.print(Color.black, "P" + jobs.getId() + " está executando (Burst Time = " + i + ")");
             }
 
-            this.print(Color.red, "Processo P" + jobs.getId() + " foi finalizado (Burst Time = 0 segundos)");
+            this.print(Color.red, "P" + jobs.getId() + " executado (Burst Time = 0s)");
             
             totalTime = totalTime + lastTime;
             lastTime = lastTime + jobs.getBurstTime();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package scheduling;
 
 import java.awt.Color;
@@ -17,11 +12,8 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import view.ExecuteView;
 
-/**
- * This class calculate the average time using the algorithm SJF (preemptive).
- *
- */
 public class SJF extends Thread {
+    
     private List<Jobs> jobs = new ArrayList<Jobs>();
     private ExecuteView executeView;
 
@@ -68,7 +60,7 @@ public class SJF extends Thread {
                     }
                 }
 
-                this.print(Color.black, "Processo P" + currentJob.getId() + " está executando (Burst Time = " + currentJob.getBurstTime() + ")");
+                this.print(Color.black, "P" + currentJob.getId() + " está executando (Burst Time = " + currentJob.getBurstTime() + ")");
 
                 currentJob.setBurstTime(currentJob.getBurstTime() - 1);
 
@@ -80,7 +72,7 @@ public class SJF extends Thread {
                     }
                     executedJobs.add(currentJob);
                     
-                    this.print(Color.red, "Processo P" + currentJob.getId() + " foi finalizado (Burst Time = 0 segundos)");
+                    this.print(Color.red, "P" + currentJob.getId() + " foi executado (Burst Time = 0 segundos)");
                 }
             }
 
@@ -115,6 +107,7 @@ public class SJF extends Thread {
     }
     
     public static Comparator<Jobs> firstArrived = new Comparator<Jobs>() {
+        
         @Override
         public int compare(Jobs job1, Jobs job2) {
             if (job1.getArrivalTime() > job2.getArrivalTime()) {

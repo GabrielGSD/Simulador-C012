@@ -17,8 +17,7 @@ public class Jobs {
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
     }
-    
-    //Getters and Setters
+  
     public int getExecuted() {
         return executed;
     }
